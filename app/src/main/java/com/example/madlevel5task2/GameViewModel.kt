@@ -6,23 +6,44 @@ import androidx.lifecycle.LiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 
 class GameViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val ioScope = CoroutineScope(Dispatchers.IO)
-    private val gameRepository = GameRepository(application.applicationContext)
+    private val mainScope = CoroutineScope(Dispatchers.Main)
 
-    val games: LiveData<List<Game>> = gameRepository.getAllGames()
+    private val repository = GameRepository(application.applicationContext)
 
-    fun insertGame(game: Game) {
-        ioScope.launch {
-            gameRepository.insertGame(game)
+    val games: LiveData<List<Game>> = repository.getAllGames()
+
+    fun addGame(title: String, platform: String, day: String, month: String, year: String) {
+        val dateFormat =  SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+        val date = dateFormat.parse("$day-$month-$year")
+
+
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                repository.insertGame(Game(title, platform, date))
+            }
         }
     }
 
     fun deleteGame(game: Game) {
-        ioScope.launch {
-            gameRepository.deleteGame(game)
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                repository.deleteGame(game)
+            }
+        }
+    }
+
+    fun deleteAllGames() {
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                repository.deleteAllGames()
+            }
         }
     }
 

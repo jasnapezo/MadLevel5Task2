@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ParkItemActivity">
+    tools:context="com.example.madlevel5task2.ui.MainActivity">
 
-    <item android:id="@+id/action_remove"
-        android:title="@string/action_remove"
-        app:showAsAction="ifRoom"
-        android:icon="@android:drawable/ic_menu_delete"/>
+    <item
+        android:id="@+id/btn_clear"
+        android:icon="@drawable/ic_delete_24px"
+        android:title="@string/clear"
+        app:showAsAction="always" />
 
 </menu>

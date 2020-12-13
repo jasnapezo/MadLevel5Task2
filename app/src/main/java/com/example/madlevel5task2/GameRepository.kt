@@ -5,15 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 class GameRepository (context: Context) {
-    private var gameDao: GameDao
+    private val gameDao: GameDao
 
     init {
-        val gameRoomDatabase = GameRoomDatabase.getDatabase(context)
-        gameDao = gameRoomDatabase!!.gameDao()
+        val database = GameRoomDatabase.getDatabase(context)
+        gameDao = database!!.gameDao()
     }
 
     fun getAllGames(): LiveData<List<Game>> {
-        return gameDao?.getAllGames() ?: MutableLiveData(emptyList())
+        return gameDao.getAllGames()
     }
 
     suspend fun insertGame(game: Game) {
@@ -24,8 +24,7 @@ class GameRepository (context: Context) {
         gameDao.deleteGame(game)
     }
 
-    suspend fun updateGame(game: Game) {
-        gameDao.updateGame(game)
+    suspend fun deleteAllGames() {
+        gameDao.deleteAllGames()
     }
-
 }

@@ -29,9 +29,9 @@ class GameAdapter (private val games: List<Game>):
         fun databind(game: Game) {
             val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH)
 
-            itemView.textViewName.text = game.title
-            itemView.textViewPlatform.text = game.platform
-            itemView.textViewReleaseDate.text = itemView.context.getString(R.string.releaseDate, dateFormat.format(game.releaseDate))
+            itemView.txtViewName.text = game.title
+            itemView.txtViewPlatform.text = game.platform
+            itemView.txtViewReleaseDate.text = itemView.context.getString(R.string.releaseDate, dateFormat.format(game.releaseDate))
         }
     }
 }

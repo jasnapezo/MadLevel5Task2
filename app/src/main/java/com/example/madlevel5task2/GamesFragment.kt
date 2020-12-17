@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,14 +59,14 @@ class GamesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // recyclerview
-        rvGames.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        rvGames.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = adapter
 
         // observe for changes in the game list
         observeGames()
 
         // add item swipe capability
-        createItemTouchHelper().attachToRecyclerView(rvGames)
+        createItemTouchHelper().attachToRecyclerView(recyclerView)
     }
 
     private fun observeGames() {

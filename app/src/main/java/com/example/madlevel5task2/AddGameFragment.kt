@@ -52,6 +52,7 @@ class AddGameFragment : Fragment() {
 
         saveClick()
 
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_game, container, false)
     }
 

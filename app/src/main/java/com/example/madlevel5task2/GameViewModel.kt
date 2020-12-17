@@ -23,7 +23,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         val dateFormat =  SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
         val date = dateFormat.parse("$day-$month-$year")
 
-
+        // change to background thread to insert game
         mainScope.launch {
             withContext(Dispatchers.IO) {
                 repository.insertGame(Game(title, platform, date))

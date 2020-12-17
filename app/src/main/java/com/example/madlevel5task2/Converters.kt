@@ -3,7 +3,7 @@ package com.example.madlevel5task2
 import androidx.room.TypeConverter
 import java.util.*
 
-class Converter {
+class Converters {
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
         return value?.let { Date(it) }

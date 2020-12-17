@@ -11,5 +11,5 @@
 
     <string name="releaseDate">Release: %1$s</string>
 
-    <string name="badInput">Please fill in all fields correctly</string>
+    <string name="badInput">All fields must be correctly filled!</string>
 </resources>
